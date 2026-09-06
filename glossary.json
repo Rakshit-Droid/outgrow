@@ -1,0 +1,583 @@
+{
+  "version": 1,
+  "note": "One file, many uses. The skill reads this. Tests read this. Translations copy this. Add terms by pull request. Keep 'plain' to one sentence, written for someone who has never coded.",
+  "fields": {
+    "term": "What appears on screen.",
+    "aliases": "Other spellings that mean the same thing.",
+    "plain": "One sentence. What it means for YOUR app, not what it means in computer science.",
+    "analogy": "Fixed comparison. Always the same one, so it sticks.",
+    "triage": "normal = ignore it | warning = works now, bites later | broken = must fix | null = not an error",
+    "danger": "money | irreversible | secret | null. Never graduates away.",
+    "next": "What to do or look at. Every entry must have one."
+  },
+
+  "terms": [
+    {
+      "term": "npm install",
+      "aliases": ["npm i", "yarn install", "pnpm install", "npm ci"],
+      "plain": "Downloading the pre-made code pieces your app borrows from other people.",
+      "analogy": "Going to the shop for ingredients before cooking.",
+      "triage": null,
+      "danger": null,
+      "next": "Wait for it to finish. It only needs to run again when the ingredient list changes."
+    },
+    {
+      "term": "npm run dev",
+      "aliases": ["npm start", "yarn dev", "pnpm dev", "next dev", "vite"],
+      "plain": "Starting your app on your own computer so you can look at it.",
+      "analogy": "Switching on the lights in a shop that is not open to the public yet.",
+      "triage": null,
+      "danger": null,
+      "next": "Open Chrome and go to the localhost address it printed, usually http://localhost:3000."
+    },
+    {
+      "term": "npm run build",
+      "aliases": ["yarn build", "next build", "vite build"],
+      "plain": "Packing your app into its final, faster form, ready to put on the internet.",
+      "analogy": "Boxing up a meal for delivery instead of eating it in the kitchen.",
+      "triage": null,
+      "danger": null,
+      "next": "If it finishes with no red text, your app is ready to publish."
+    },
+    {
+      "term": "localhost",
+      "aliases": ["127.0.0.1", "localhost:3000"],
+      "plain": "Your app running only on your own computer. Nobody else on the internet can see it.",
+      "analogy": "A rehearsal in your living room, not a show on stage.",
+      "triage": null,
+      "danger": null,
+      "next": "Type the whole address into Chrome, including the number after the colon."
+    },
+    {
+      "term": "port",
+      "aliases": ["port 3000", "port 5173", "port 8080"],
+      "plain": "A numbered doorway on your computer. Your app sits behind one of them.",
+      "analogy": "A flat number in a building. Same building, different doors.",
+      "triage": null,
+      "danger": null,
+      "next": "The number in the address after the colon is the door your app is using."
+    },
+    {
+      "term": "EADDRINUSE",
+      "aliases": ["address already in use", "port already in use", "port 3000 is in use"],
+      "plain": "Your app is already running somewhere. It cannot start a second copy in the same doorway.",
+      "analogy": "Trying to park in a space your own car is already in.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Check your other browser tabs and terminal windows first. It is probably already open. Otherwise close the old one and start again."
+    },
+    {
+      "term": "module not found",
+      "aliases": ["cannot find module", "MODULE_NOT_FOUND", "failed to resolve import"],
+      "plain": "Your code is asking for a piece that is not on your computer, or the file name is spelled wrong.",
+      "analogy": "A recipe asking for an ingredient that is not in the kitchen.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Usually fixed by installing the missing piece, or by fixing a spelling mistake in a file name."
+    },
+    {
+      "term": "node_modules",
+      "aliases": [],
+      "plain": "The folder holding every borrowed code piece your app uses. Huge, and you never edit it by hand.",
+      "analogy": "The pantry. You put things in it, you do not rearrange the shelves.",
+      "triage": null,
+      "danger": null,
+      "next": "Ignore this folder. It rebuilds itself from the ingredient list."
+    },
+    {
+      "term": "package.json",
+      "aliases": [],
+      "plain": "The list of every borrowed piece your app needs, plus the shortcut commands for running it.",
+      "analogy": "The shopping list and the recipe card, on one page.",
+      "triage": null,
+      "danger": null,
+      "next": "This file is safe to read. The 'scripts' part is the list of commands you can run."
+    },
+    {
+      "term": "dependency",
+      "aliases": ["package", "library", "module"],
+      "plain": "A chunk of code somebody else already wrote, that your app borrows instead of building it again.",
+      "analogy": "A lego brick you buy instead of moulding yourself.",
+      "triage": null,
+      "danger": null,
+      "next": "More of these is normal. Every app has dozens."
+    },
+    {
+      "term": "framework",
+      "aliases": ["React", "Next.js", "Vue", "Svelte", "Express"],
+      "plain": "A big set of ready-made rules and parts that decides how your whole app is put together.",
+      "analogy": "A house kit. Walls and plumbing already designed, you choose the paint.",
+      "triage": null,
+      "danger": null,
+      "next": "You picked one at the start. Changing it later means rebuilding, so stick with it."
+    },
+    {
+      "term": "npm audit vulnerabilities",
+      "aliases": ["found 3 vulnerabilities", "high severity vulnerability", "npm audit fix"],
+      "plain": "A warning that one of your borrowed pieces has a known weakness. Almost always harmless while your app is only on your computer.",
+      "analogy": "A recall notice for a part deep inside a machine you have not switched on yet.",
+      "triage": "warning",
+      "danger": null,
+      "next": "Ignore it for now. Deal with it before you put the app on the internet, not during building."
+    },
+    {
+      "term": "peer dependency warning",
+      "aliases": ["ERESOLVE", "unmet peer dependency"],
+      "plain": "Two borrowed pieces disagree about which version of a third piece they want.",
+      "analogy": "Two recipes arguing over which brand of flour to use.",
+      "triage": "warning",
+      "danger": null,
+      "next": "If the app still runs, ignore it. If the app will not start, this is the likely cause."
+    },
+    {
+      "term": "deprecated",
+      "aliases": ["is deprecated", "no longer supported"],
+      "plain": "This piece still works, but the people who made it have stopped looking after it.",
+      "analogy": "A model of phone that still switches on but gets no more updates.",
+      "triage": "warning",
+      "danger": null,
+      "next": "Nothing to do today. Worth replacing eventually."
+    },
+    {
+      "term": "git",
+      "aliases": [],
+      "plain": "The tool that remembers every version of your project, so you can go back if you break something.",
+      "analogy": "Unlimited undo, but for your whole project instead of one document.",
+      "triage": null,
+      "danger": null,
+      "next": "Nothing to do. It works quietly in the background."
+    },
+    {
+      "term": "commit",
+      "aliases": ["git commit"],
+      "plain": "Saving a snapshot of your project that you can always come back to.",
+      "analogy": "A save point in a game.",
+      "triage": null,
+      "danger": null,
+      "next": "Do this whenever something works. Saving often costs nothing."
+    },
+    {
+      "term": "branch",
+      "aliases": ["git branch", "git checkout -b"],
+      "plain": "A separate copy of your project where you can try things without touching the version that works.",
+      "analogy": "A parallel universe of your files. What happens there stays there until you decide otherwise.",
+      "triage": null,
+      "danger": null,
+      "next": "Safe to experiment here. The working version is untouched."
+    },
+    {
+      "term": "git push",
+      "aliases": ["push to origin", "push to main"],
+      "plain": "Uploading your saved snapshots from your computer to GitHub.",
+      "analogy": "Posting your homework, not just writing it.",
+      "triage": null,
+      "danger": "irreversible",
+      "next": "Once pushed to a public repo, strangers can see it. Check no passwords or keys are inside first."
+    },
+    {
+      "term": "git pull",
+      "aliases": ["pull from origin", "git fetch"],
+      "plain": "Downloading changes other people made, so your copy matches theirs.",
+      "analogy": "Getting the latest version of a shared document.",
+      "triage": null,
+      "danger": null,
+      "next": "Safe. If it reports a conflict, see 'merge conflict'."
+    },
+    {
+      "term": "merge conflict",
+      "aliases": ["CONFLICT", "Automatic merge failed", "<<<<<<< HEAD"],
+      "plain": "You and someone else changed the same lines, and the computer will not guess which version wins.",
+      "analogy": "Two people editing the same sentence at once. Somebody has to choose.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Nothing is lost. Both versions are still there, marked in the file. Someone picks which to keep."
+    },
+    {
+      "term": "repository",
+      "aliases": ["repo", "git repo"],
+      "plain": "Your project folder, plus its full history of saved snapshots.",
+      "analogy": "A project folder with a memory.",
+      "triage": null,
+      "danger": null,
+      "next": "Public repo means anyone can read it. Private means only you and people you invite."
+    },
+    {
+      "term": "pull request",
+      "aliases": ["PR", "merge request"],
+      "plain": "A proposal to add your changes into the main project, so someone can look before it goes in.",
+      "analogy": "Handing in a draft for approval instead of publishing it directly.",
+      "triage": null,
+      "danger": null,
+      "next": "Nothing happens to the main project until someone approves it."
+    },
+    {
+      "term": "detached HEAD",
+      "aliases": ["you are in detached HEAD state"],
+      "plain": "You are looking at an old snapshot of your project instead of the current one. Changes made here can get lost.",
+      "analogy": "Reading an old draft and typing into it, while the real document sits elsewhere.",
+      "triage": "warning",
+      "danger": "irreversible",
+      "next": "Do not keep working here. Go back to your normal branch before editing anything."
+    },
+    {
+      "term": "git reset --hard",
+      "aliases": ["git checkout .", "git clean -fd"],
+      "plain": "Throwing away all your unsaved changes and going back to the last snapshot.",
+      "analogy": "Closing a document without saving, on purpose.",
+      "triage": null,
+      "danger": "irreversible",
+      "next": "Anything you have not committed is gone for good. Be sure before running this."
+    },
+    {
+      "term": "rm -rf",
+      "aliases": ["Remove-Item -Recurse -Force", "del /s"],
+      "plain": "Deleting files and folders permanently. No recycle bin, no undo.",
+      "analogy": "A shredder, not a bin.",
+      "triage": null,
+      "danger": "irreversible",
+      "next": "Read exactly which folder is named before you approve this. There is no way back."
+    },
+    {
+      "term": "server",
+      "aliases": ["backend", "API server"],
+      "plain": "The part of your app that runs on a computer somewhere and does the work — checking passwords, saving data, doing sums.",
+      "analogy": "The kitchen of a restaurant. Customers never see it.",
+      "triage": null,
+      "danger": null,
+      "next": "If this stops, the app looks fine but nothing works."
+    },
+    {
+      "term": "client",
+      "aliases": ["frontend", "browser"],
+      "plain": "The part of your app that people actually see and click, running inside their browser.",
+      "analogy": "The dining room of a restaurant.",
+      "triage": null,
+      "danger": null,
+      "next": "This is what you are looking at in Chrome."
+    },
+    {
+      "term": "API",
+      "aliases": ["endpoint", "REST API", "API route"],
+      "plain": "A doorway your app uses to ask another program for information or to do something.",
+      "analogy": "A waiter. You do not walk into the kitchen, you ask them.",
+      "triage": null,
+      "danger": null,
+      "next": "If data is not showing up, this doorway is usually where to look."
+    },
+    {
+      "term": "API key",
+      "aliases": ["secret key", "access token", "API token", "sk-", "bearer token"],
+      "plain": "A password that lets your app use somebody else's service. Whoever has it can spend your money.",
+      "analogy": "Your credit card number, written in a text file.",
+      "triage": null,
+      "danger": "secret",
+      "next": "Never put this in a file you upload to GitHub. It belongs in a .env file only."
+    },
+    {
+      "term": ".env",
+      "aliases": ["environment variable", "env file", "process.env"],
+      "plain": "A private file holding your passwords and keys, kept out of your uploaded code.",
+      "analogy": "The safe, not the shop window.",
+      "triage": null,
+      "danger": "secret",
+      "next": "Make sure .env is listed in your .gitignore file. That is what keeps it off the internet."
+    },
+    {
+      "term": ".gitignore",
+      "aliases": [],
+      "plain": "A list of files that should never be uploaded, no matter what.",
+      "analogy": "A 'do not pack' list before a trip.",
+      "triage": null,
+      "danger": null,
+      "next": "Your .env file and node_modules folder should both be in here."
+    },
+    {
+      "term": "database",
+      "aliases": ["DB", "Postgres", "MySQL", "SQLite", "MongoDB", "Supabase"],
+      "plain": "Where your app keeps information that has to survive after the page closes — users, posts, orders.",
+      "analogy": "The filing cabinet.",
+      "triage": null,
+      "danger": null,
+      "next": "If your data keeps disappearing, this is not connected properly."
+    },
+    {
+      "term": "migration",
+      "aliases": ["db migration", "prisma migrate", "schema change"],
+      "plain": "Changing the shape of your filing cabinet — adding a new drawer, renaming a label.",
+      "analogy": "Reorganising a filing cabinet while files are still inside it.",
+      "triage": null,
+      "danger": "irreversible",
+      "next": "On a real database with real users, this can delete data. Make a backup first."
+    },
+    {
+      "term": "404",
+      "aliases": ["404 not found", "page not found"],
+      "plain": "The address you asked for does not exist. Usually a typo in a link or a page you have not made yet.",
+      "analogy": "Knocking on a door with no house behind it.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Check the address in the browser bar for a spelling mistake first."
+    },
+    {
+      "term": "500",
+      "aliases": ["500 internal server error", "internal server error"],
+      "plain": "Your app's back room crashed while trying to answer. The problem is in your code, not the browser.",
+      "analogy": "The kitchen caught fire. The dining room just sees no food arriving.",
+      "triage": "broken",
+      "danger": null,
+      "next": "The real reason is printed in the terminal, not in the browser. Look there."
+    },
+    {
+      "term": "CORS error",
+      "aliases": ["blocked by CORS policy", "Access-Control-Allow-Origin"],
+      "plain": "The browser blocked your app from talking to another address, as a safety rule.",
+      "analogy": "A bouncer refusing entry because your name is not on the list.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Fixed on the server side, by adding your address to its allowed list. Not fixable in the browser."
+    },
+    {
+      "term": "hydration error",
+      "aliases": ["hydration mismatch", "text content did not match", "hydration failed"],
+      "plain": "The page the server built and the page the browser built came out different, so the browser complained.",
+      "analogy": "Two people drawing the same picture from the same instructions and getting different results.",
+      "triage": "warning",
+      "danger": null,
+      "next": "The page usually still works. Common cause is showing the current time or a random value."
+    },
+    {
+      "term": "permission denied",
+      "aliases": ["EACCES", "access is denied", "operation not permitted"],
+      "plain": "Your computer refused because this action needs higher privileges, or the file is locked by another program.",
+      "analogy": "A door that needs a key you are not carrying.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Often means the file is open in another program. Close it and try again before anything else."
+    },
+    {
+      "term": "ENOENT",
+      "aliases": ["no such file or directory", "cannot find path"],
+      "plain": "Your code looked for a file that is not where it expected.",
+      "analogy": "Reaching into a drawer that is empty.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Almost always a spelling mistake in a file name or folder path."
+    },
+    {
+      "term": "out of memory",
+      "aliases": ["heap out of memory", "JavaScript heap out of memory", "OOM"],
+      "plain": "Your app asked for more of the computer's short-term memory than there is.",
+      "analogy": "A desk too small for the pile of paper on it.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Usually a loop that never ends, or a file too big to open all at once."
+    },
+    {
+      "term": "syntax error",
+      "aliases": ["unexpected token", "SyntaxError", "parse error"],
+      "plain": "A typo. A missing bracket, comma, or quote mark. The computer cannot even read the file.",
+      "analogy": "A sentence missing its closing bracket — you cannot finish reading it either.",
+      "triage": "broken",
+      "danger": null,
+      "next": "The line number in the message is where to look, or the line just above it."
+    },
+    {
+      "term": "type error",
+      "aliases": ["TypeScript error", "TS2322", "is not assignable to type"],
+      "plain": "You gave something the wrong kind of value — text where a number was expected, or similar.",
+      "analogy": "Putting a letter into a coin slot.",
+      "triage": "broken",
+      "danger": null,
+      "next": "Your app may still run despite this. It is a warning about a mistake waiting to happen."
+    },
+    {
+      "term": "undefined is not a function",
+      "aliases": ["cannot read property of undefined", "cannot read properties of null", "TypeError"],
+      "plain": "Your code tried to use something that is not there — usually data that had not arrived yet.",
+      "analogy": "Reaching for a cup that has not been put on the table yet.",
+      "triage": "broken",
+      "danger": null,
+      "next": "The most common bug in web apps. Usually fixed by waiting for the data before using it."
+    },
+    {
+      "term": "async / await",
+      "aliases": ["promise", "asynchronous", "pending promise"],
+      "plain": "Code that has to wait for something slow — a download, a database — before it can carry on.",
+      "analogy": "Ordering food, then waiting for it to arrive before eating.",
+      "triage": null,
+      "danger": null,
+      "next": "If data shows as empty for a second and then appears, this is why. Normal."
+    },
+    {
+      "term": "component",
+      "aliases": ["React component", "JSX"],
+      "plain": "One reusable piece of your page — a button, a card, a header — written once and used many times.",
+      "analogy": "A rubber stamp. Make it once, press it anywhere.",
+      "triage": null,
+      "danger": null,
+      "next": "Change it in one place and it changes everywhere it is used."
+    },
+    {
+      "term": "state",
+      "aliases": ["useState", "component state"],
+      "plain": "Information your page remembers while you are using it — what you typed, which tab is open.",
+      "analogy": "Short-term memory. Forgotten when you refresh the page.",
+      "triage": null,
+      "danger": null,
+      "next": "If something resets when you refresh, it was only stored here, not saved anywhere."
+    },
+    {
+      "term": "props",
+      "aliases": ["properties", "passing props"],
+      "plain": "Information handed from one piece of your page down to a smaller piece inside it.",
+      "analogy": "Passing a note down a row of people.",
+      "triage": null,
+      "danger": null,
+      "next": "If a piece is showing the wrong thing, check what is being handed to it."
+    },
+    {
+      "term": "route",
+      "aliases": ["routing", "router", "path"],
+      "plain": "The rule that decides which page shows for which web address.",
+      "analogy": "A signpost at a junction.",
+      "triage": null,
+      "danger": null,
+      "next": "If a page shows 404, its route is missing or spelled differently."
+    },
+    {
+      "term": "cache",
+      "aliases": ["cached", "clear cache", "stale cache"],
+      "plain": "A saved copy kept to make things faster. Sometimes it keeps showing you the old version.",
+      "analogy": "Leftovers in the fridge. Quick, but not always fresh.",
+      "triage": null,
+      "danger": null,
+      "next": "If your change is not showing up, do a hard refresh in Chrome: Ctrl+Shift+R."
+    },
+    {
+      "term": "build",
+      "aliases": ["compile", "bundling", "transpile"],
+      "plain": "Turning the code you wrote into the packed-up version a browser can actually run.",
+      "analogy": "Translating a book before selling it abroad.",
+      "triage": null,
+      "danger": null,
+      "next": "If this fails, your app cannot go online. Fix before deploying."
+    },
+    {
+      "term": "deploy",
+      "aliases": ["deployment", "vercel deploy", "ship to production", "push to prod"],
+      "plain": "Putting your app on the internet so other people can open it.",
+      "analogy": "Opening the shop to the public.",
+      "triage": null,
+      "danger": "money",
+      "next": "Free for small apps on most services, but usage above the free limit is charged. Check the plan before deploying anything heavy."
+    },
+    {
+      "term": "production",
+      "aliases": ["prod", "live", "production environment"],
+      "plain": "The real version of your app that real people are using right now.",
+      "analogy": "Live on stage, not rehearsal.",
+      "triage": null,
+      "danger": "irreversible",
+      "next": "Mistakes here are visible to everyone immediately. Test on your own computer first."
+    },
+    {
+      "term": "environment",
+      "aliases": ["dev environment", "staging", "NODE_ENV"],
+      "plain": "Which copy of your app you are dealing with — the one on your computer, or the real one on the internet.",
+      "analogy": "Rehearsal room versus stage.",
+      "triage": null,
+      "danger": null,
+      "next": "Check which one you are pointed at before changing anything."
+    },
+    {
+      "term": "lint",
+      "aliases": ["eslint", "linter", "lint error", "prettier"],
+      "plain": "An automatic tidiness checker. It complains about style, not about things being broken.",
+      "analogy": "A spellchecker. Underlines things, does not stop you writing.",
+      "triage": "warning",
+      "danger": null,
+      "next": "Your app still runs with these. Safe to leave until later."
+    },
+    {
+      "term": "TypeScript",
+      "aliases": ["TS", "tsc", ".ts file"],
+      "plain": "A stricter way of writing JavaScript that catches certain mistakes before you run the app.",
+      "analogy": "Grammar check switched on while you write.",
+      "triage": null,
+      "danger": null,
+      "next": "Its complaints are early warnings, not crashes."
+    },
+    {
+      "term": "terminal",
+      "aliases": ["command line", "shell", "console", "CLI"],
+      "plain": "The text window where you type commands instead of clicking buttons.",
+      "analogy": "Talking to your computer instead of pointing at it.",
+      "triage": null,
+      "danger": null,
+      "next": "Text scrolling past here is normal. Only red text and the word 'error' need attention."
+    },
+    {
+      "term": "stack trace",
+      "aliases": ["at Object.<anonymous>", "call stack", "traceback"],
+      "plain": "The long list of file names after an error, showing the path the code took before it broke.",
+      "analogy": "Footprints leading back from the scene.",
+      "triage": null,
+      "danger": null,
+      "next": "Only the top line matters, and only the lines mentioning your own files. Ignore the rest."
+    },
+    {
+      "term": "warning",
+      "aliases": ["warn", "npm WARN", "deprecation warning"],
+      "plain": "The computer telling you about something imperfect. It did not stop anything.",
+      "analogy": "A yellow light, not a red one.",
+      "triage": "warning",
+      "danger": null,
+      "next": "Keep going. Warnings do not break your app."
+    },
+    {
+      "term": "docker",
+      "aliases": ["container", "docker run", "docker compose"],
+      "plain": "A way of packing your app together with everything it needs, so it runs the same on any computer.",
+      "analogy": "A shipping container. Same contents, any ship.",
+      "triage": null,
+      "danger": null,
+      "next": "Heavy on disk space. Fine to skip entirely for small projects."
+    },
+    {
+      "term": "npx",
+      "aliases": [],
+      "plain": "Runs a tool once without permanently installing it.",
+      "analogy": "Renting a drill instead of buying one.",
+      "triage": null,
+      "danger": null,
+      "next": "Normal. Nothing to clean up afterwards."
+    },
+    {
+      "term": "webhook",
+      "aliases": ["callback URL"],
+      "plain": "A way for another service to tell your app that something happened, without your app having to keep asking.",
+      "analogy": "Someone ringing your doorbell instead of you checking the door every minute.",
+      "triage": null,
+      "danger": null,
+      "next": "Needs your app to be on the internet. Will not reach localhost."
+    },
+    {
+      "term": "rate limit",
+      "aliases": ["429", "too many requests", "quota exceeded"],
+      "plain": "A service told your app to slow down, because it asked too many times too quickly.",
+      "analogy": "A shop with a one-per-customer rule.",
+      "triage": "warning",
+      "danger": "money",
+      "next": "Wait and try again. If it keeps happening, something in your code is asking in a loop — that can get expensive."
+    },
+    {
+      "term": "token usage",
+      "aliases": ["tokens", "context window", "input tokens", "output tokens"],
+      "plain": "How much text an AI service has read and written for you. This is what you are billed for.",
+      "analogy": "The meter in a taxi.",
+      "triage": null,
+      "danger": "money",
+      "next": "Long conversations and big files cost more. Check your usage page if unsure."
+    }
+  ]
+}

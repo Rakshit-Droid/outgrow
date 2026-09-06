@@ -1,0 +1,6 @@
+# The learning-progress file the skill writes into a user's project.
+# Personal to each user, never shared.
+.outgrow/
+
+.DS_Store
+Thumbs.db
