@@ -239,7 +239,7 @@
     },
     {
       "term": "server",
-      "aliases": ["backend", "API server"],
+      "aliases": ["backend", "API server", "server-side"],
       "plain": "The part of your app that runs on a computer somewhere and does the work — checking passwords, saving data, doing sums.",
       "analogy": "The kitchen of a restaurant. Customers never see it.",
       "triage": null,
@@ -248,7 +248,7 @@
     },
     {
       "term": "client",
-      "aliases": ["frontend", "browser"],
+      "aliases": ["frontend", "browser", "client-side"],
       "plain": "The part of your app that people actually see and click, running inside their browser.",
       "analogy": "The dining room of a restaurant.",
       "triage": null,
@@ -446,7 +446,7 @@
     },
     {
       "term": "cache",
-      "aliases": ["cached", "clear cache", "stale cache"],
+      "aliases": ["cached", "clear cache", "stale cache", "Redis"],
       "plain": "A saved copy kept to make things faster. Sometimes it keeps showing you the old version.",
       "analogy": "Leftovers in the fridge. Quick, but not always fresh.",
       "triage": null,
@@ -563,7 +563,7 @@
     },
     {
       "term": "rate limit",
-      "aliases": ["429", "too many requests", "quota exceeded"],
+      "aliases": ["429", "too many requests", "quota exceeded", "rate limiter"],
       "plain": "A service told your app to slow down, because it asked too many times too quickly.",
       "analogy": "A shop with a one-per-customer rule.",
       "triage": "warning",
@@ -599,7 +599,7 @@
     },
     {
       "term": "constraint",
-      "aliases": ["database constraint", "unique constraint", "not null constraint", "constraint violation", "constraint tests", "constraint failed"],
+      "aliases": ["database constraint", "unique constraint", "not null constraint", "constraint violation", "constraint tests", "constraint failed", "CHECK", "CHECK constraint"],
       "plain": "A rule your data must obey — this field cannot be empty, this value must be unique, this number cannot go below zero.",
       "analogy": "A rule on a form: one email per account, no blank names.",
       "triage": null,
@@ -689,7 +689,7 @@
     },
     {
       "term": "index",
-      "aliases": ["database index", "unique index", "partial unique index", "add an index", "indexed", "UNIQUE", "duplicate key", "unique violation"],
+      "aliases": ["database index", "unique index", "partial unique index", "add an index", "indexed", "UNIQUE", "duplicate key", "unique violation", "keyed by"],
       "plain": "A lookup table the database keeps so it can find records fast. A unique index also refuses two records with the same value.",
       "analogy": "The index at the back of a book — find the page without reading the whole thing.",
       "triage": null,
@@ -766,7 +766,7 @@
       "analogy": "The envelope. Not the letter, but everything written on the outside of it.",
       "triage": null,
       "danger": null,
-      "next": "A 'missing header' means a label was left off. Often harmless, sometimes the reason a message displays wrong or gets rejected."
+      "next": "A 'missing header' means a label was left off. Often harmless, sometimes the reason a message displays wrong or gets rejected. Not the same as a page header — the strip at the top of a web page — which is just layout."
     },
     {
       "term": "regex",
@@ -869,7 +869,7 @@
     },
     {
       "term": "timing attack",
-      "aliases": ["user enumeration", "account enumeration", "constant-time", "response time doesn't reveal", "timing-safe"],
+      "aliases": ["user enumeration", "account enumeration", "constant-time", "response time doesn't reveal", "timing-safe", "oracle", "probing which"],
       "plain": "A trick where an attacker learns something from how long a reply takes — a fast 'wrong password' can reveal that the account does not exist.",
       "analogy": "Knocking on doors and timing how long before someone says 'nobody here'.",
       "triage": null,
@@ -941,12 +941,138 @@
     },
     {
       "term": "signature",
-      "aliases": ["HMAC", "signed", "signing", "tamper-evident", "verify signature", "invalid signature", "signed cookie"],
+      "aliases": ["HMAC", "signed", "signing", "tamper-evident", "verify signature", "invalid signature", "signed cookie", "signed URL", "presigned URL", "signed playback"],
       "plain": "A seal added to data using a secret key. Anyone can read the data, but nobody can alter it without the seal failing to match.",
       "analogy": "A wax seal on a letter. Reading is fine; opening it breaks the seal.",
       "triage": null,
       "danger": null,
       "next": "'Invalid signature' means data was changed after it was sealed, or the wrong key was used to check it. Either way, do not trust that data."
+    },
+    {
+      "term": "page copy",
+      "aliases": ["the copy", "copywriting", "microcopy", "marketing copy", "copy claiming"],
+      "plain": "The words on a page — headlines, buttons, labels, the small print. Not code, not design: the text itself.",
+      "analogy": "The script, as opposed to the set.",
+      "triage": null,
+      "danger": null,
+      "next": "'Copy claiming X' means the wording on the page says X. A 'Copy button' is different — that one copies to the clipboard."
+    },
+    {
+      "term": "event",
+      "aliases": ["events", "event listener", "click event", "onClick", "emit", "emits", "fires", "logged event"],
+      "plain": "One thing that happened, recorded or reacted to — a click, a page opened, a file downloaded.",
+      "analogy": "A doorbell ring. Something happened; now something can respond.",
+      "triage": null,
+      "danger": null,
+      "next": "'Writes one event' means one line gets added to a log. 'Fires' or 'emits' means it just happened."
+    },
+    {
+      "term": "user flow",
+      "aliases": ["flow", "flows", "auth flow", "checkout flow", "dispute flow", "login flow", "the flow"],
+      "plain": "The sequence of screens and steps a person goes through to get something done — sign up, pay, dispute a delivery.",
+      "analogy": "The route through a shop from the door to the till.",
+      "triage": null,
+      "danger": null,
+      "next": "If a flow 'breaks', someone gets stuck partway through. Ask which step."
+    },
+    {
+      "term": "render",
+      "aliases": ["rendering", "rendered", "re-render", "on mount", "mount", "mounted", "during render", "server-rendered"],
+      "plain": "The browser drawing a page or component on screen. 'On mount' is the first time it appears; a 're-render' is a redraw after something changed.",
+      "analogy": "Developing a photo. Mount is the first print; re-render is printing again with a change.",
+      "triage": null,
+      "danger": null,
+      "next": "Something done 'during render' can happen many times. 'On mount' means once, when it first shows. That difference matters for anything you count."
+    },
+    {
+      "term": "crawler",
+      "aliases": ["crawlers", "bot", "bots", "spider", "scanner", "mail scanner", "prefetch", "link preview", "robots.txt"],
+      "plain": "An automatic program that opens web pages without a human — search engines, link previewers, corporate email scanners.",
+      "analogy": "A postal sorter opening every letter to check it. Not a reader.",
+      "triage": null,
+      "danger": null,
+      "next": "Crawlers hitting your links is normal and constant. Counting them as real views would inflate your numbers — good code filters them out."
+    },
+    {
+      "term": "dedupe",
+      "aliases": ["deduplicate", "deduplication", "dedup", "duplicates", "duplicate", "dedupe cookie"],
+      "plain": "Removing repeats so each thing counts once — the same person opening a link three times is one viewer, not three.",
+      "analogy": "Crossing out duplicate names on a guest list.",
+      "triage": null,
+      "danger": null,
+      "next": "A 'dedupe cookie' is a small marker that says 'this browser has already been counted'."
+    },
+    {
+      "term": "token",
+      "aliases": ["raw token", "auth token", "one-time token", "signed token", "JWT", "mint", "minting", "the token"],
+      "plain": "A long random string that stands in for a secret or a permission — a login, a one-time link, a download right. Not the AI billing kind.",
+      "analogy": "A cloakroom ticket. Meaningless to anyone else; hands you your coat.",
+      "triage": null,
+      "danger": "secret",
+      "next": "Anyone holding a token can use it. Never paste one into chat, a commit, or a public page."
+    },
+    {
+      "term": "transaction",
+      "aliases": ["transactions", "atomic", "rollback", "rolled back", "BEGIN", "commit the transaction", "transactional"],
+      "plain": "A group of database changes that either all happen or none do — if step two fails, step one is undone too.",
+      "analogy": "A bank transfer: money leaves one account and lands in the other, or neither happens.",
+      "triage": null,
+      "danger": null,
+      "next": "'Rollback' means the whole group was undone. That is the safety net working, not data loss."
+    },
+    {
+      "term": "expiry",
+      "aliases": ["expires", "expired", "expiration", "TTL", "time to live", "lapsed", "link's expiry"],
+      "plain": "The moment something stops being valid — a link, a login, a token. After it, the thing is refused.",
+      "analogy": "The date on a milk carton.",
+      "triage": null,
+      "danger": null,
+      "next": "'Expired' is usually by design, not a bug. Ask whether the fix is a new link or a longer lifetime."
+    },
+    {
+      "term": "SQL",
+      "aliases": ["database query", "SQL query", "SELECT", "INSERT INTO", "DELETE FROM", "raw SQL", "in SQL", "the insert"],
+      "plain": "The language used to ask a database questions and give it orders — find these rows, add this one, change that one.",
+      "analogy": "The language you speak to the filing clerk.",
+      "triage": null,
+      "danger": null,
+      "next": "You do not need to read it. If a query fails, the error names the table or field it choked on."
+    },
+    {
+      "term": "union type",
+      "aliases": ["TS union", "union", "type definition", "typed", "typing", "type annotation", "the types"],
+      "plain": "A rule saying a value must be one of a fixed list — 'delivery' or 'approval', nothing else. TypeScript refuses anything not on the list.",
+      "analogy": "A dropdown menu. You pick from what is there; you cannot type a new option.",
+      "triage": null,
+      "danger": null,
+      "next": "When TypeScript 'catches' something like this, it stopped a value that would have been silently wrong. Good."
+    },
+    {
+      "term": "DOM",
+      "aliases": ["the DOM", "DOM overlay", "DOM element", "document object model", "in the DOM"],
+      "plain": "The browser's live, in-memory copy of the page — every element as it currently is, which code and anyone with developer tools can change.",
+      "analogy": "The stage set. The script is the code; the DOM is what is physically standing there right now.",
+      "triage": null,
+      "danger": null,
+      "next": "Anything drawn on the DOM can be removed by a viewer in seconds. Real protection has to happen on the server."
+    },
+    {
+      "term": "instance",
+      "aliases": ["instances", "multi-instance", "single-process", "single instance", "replicas", "scale out", "horizontal scaling"],
+      "plain": "One running copy of your app. 'Single-process' means exactly one; 'multi-instance' means several copies sharing the load.",
+      "analogy": "One checkout lane versus five. Five need a shared system to know what the others sold.",
+      "triage": null,
+      "danger": null,
+      "next": "Things kept in memory — counters, rate limits — do not carry across instances. That is why 'multi-instance needs Redis'."
+    },
+    {
+      "term": "wireframe",
+      "aliases": ["wireframes", "mockup", "mock-up", "mockups", "Figma", "design file", "low-fi"],
+      "plain": "A rough sketch of a screen — boxes and labels showing what goes where, with no colours or polish.",
+      "analogy": "The pencil layout before the painting.",
+      "triage": null,
+      "danger": null,
+      "next": "If a wireframe 'is the spec', the layout you drew is what gets built. Change the drawing, not the code, if you want it different."
     }
   ]
 }
