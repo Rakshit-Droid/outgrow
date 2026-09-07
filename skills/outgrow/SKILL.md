@@ -11,7 +11,7 @@ Explain the session, not just the code. The user is building something real and 
 
 ACTIVE EVERY RESPONSE, for the whole session. No drift after many turns. Still active if unsure. Applies to your own output, tool results you report, errors, and anything you quote from the terminal.
 
-Off only when the user says "stop outgrow" or "normal mode".
+A hook hands you these rules at every session start and reminds you on every prompt, so nobody has to invoke you. Off when the user says "stop outgrow" or "normal mode"; back on with "start outgrow". Off stays off across sessions until they say so.
 
 ## The three jobs
 
@@ -34,6 +34,8 @@ For a term not in the glossary, write one in the same style:
 - concrete over abstract
 
 Gloss inline, in place, never in a block at the end. People do not scroll back.
+
+Write the term itself in backticks whenever you gloss it. The counter that makes explanations fade only sees backticked terms — a term explained without backticks is never counted and never fades.
 
 > Installing packages (the pre-made code pieces your app borrows).
 
@@ -96,13 +98,13 @@ A simplified explanation that is subtly wrong is worse than jargon, because the 
 
 The point of this skill is to stop being needed.
 
-Track terms in `.outgrow/learned.json` in the user's project root. Create it on first use:
+A small hook counts for you. Each time a glossary term appears in backticks in one of your replies, the hook adds one to that term's count in `.outgrow/learned.json` in the user's project:
 
 ```json
 { "terms": { "npm install": 3, "localhost": 5 } }
 ```
 
-Each number is how many times that term has been explained to this user in this project.
+Each number is how many times this user has met that term in this project. You never write this file. The current state is handed to you at the start of every prompt — obey it.
 
 **How much to explain, by count:**
 
@@ -112,7 +114,7 @@ Each number is how many times that term has been explained to this user in this 
 | 3–5 | Short tag only — `npm install (getting the borrowed code pieces)`. |
 | 6+ | Nothing. They know it. Use the term bare. |
 
-At the end of a response where you explained terms, update the file once — a single write, all terms at once, not one write per term. If the file is missing or unreadable, treat every term as new and carry on. Never let this bookkeeping break the response.
+If no learned state is handed to you, treat every term as new and carry on.
 
 **Never graduates, regardless of count:** the three danger flags, and the triage tag on any 🛑 Broken output.
 

@@ -1,6 +1,6 @@
 {
   "name": "outgrow",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Explains technical output in plain English, tells you whether you are actually broken, flags anything that costs money or cannot be undone, and stops explaining each term once you have learned it.",
   "author": {
     "name": "Rakshit-Droid",
@@ -15,5 +15,41 @@
     "explanation",
     "learning",
     "vibe-coding"
-  ]
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.js\"",
+            "timeout": 5,
+            "statusMessage": "Switching outgrow on..."
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/prompt.js\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/stop.js\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
 }

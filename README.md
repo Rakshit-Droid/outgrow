@@ -96,7 +96,9 @@ In Claude Code, run these two lines:
 
 That is it. Build something. It switches itself on.
 
-To turn it off for a session, say `stop outgrow`.
+Say `stop outgrow` to turn it off, `start outgrow` to bring it back. Off stays off until you say so.
+
+Needs Node.js, which you already have if you installed Claude Code through npm.
 
 <details>
 <summary>Prefer to install by hand?</summary>
@@ -120,7 +122,7 @@ It keeps a small file in your project:
 { "terms": { "npm install": 3, "localhost": 6 } }
 ```
 
-That is the only state it keeps. Delete the file to start over from full explanations.
+A tiny script counts each term you have met — it runs after every reply, takes milliseconds, and never talks to the internet. That file is the only state it keeps. Delete it to start over from full explanations.
 
 Danger flags never fade. Money, deletion, and secrets get called out no matter how much you have learned.
 
@@ -143,14 +145,14 @@ Everything lives in one file: [glossary.json](skills/outgrow/glossary.json).
 
 Rules for a good entry:
 
-- `plain` is **one sentence**, and says what it means *for the thing the reader is building* — not what it means in computer science
+- `plain` is **short** — under 160 characters, two or three plain sentences at most — and says what it means *for the thing the reader is building*, not what it means in computer science
 - no technical term inside the explanation of a technical term
 - `next` is required. A definition with no next step is useless to someone building something
 - `analogy` stays fixed forever. Same comparison every time is what makes it stick
 
 **A wrong explanation is worse than jargon**, because people act on it confidently. If you are not sure, do not guess.
 
-Pull requests welcome. Adding a term is a one-file change.
+Pull requests welcome. Adding a term is a one-file change. Run `node tests/run.js` before you send it — it checks every entry and every hook.
 
 ---
 
