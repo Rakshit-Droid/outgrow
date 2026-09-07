@@ -80,8 +80,12 @@ function runHook(script, input) {
   return out;
 }
 
+let uuidSeq = 0;
 function transcriptLine(type, content, extra) {
-  return JSON.stringify(Object.assign({ type, cwd: project, message: { role: type, content } }, extra || {}));
+  return JSON.stringify(Object.assign(
+    { type, uuid: 'test-uuid-' + (++uuidSeq), cwd: project, message: { role: type, content } },
+    extra || {}
+  ));
 }
 
 function writeTranscript(lines) {
@@ -123,9 +127,20 @@ function learned() {
   check('stop: counts localhost via alias localhost:3000', t && t['localhost'] === 1, JSON.stringify(t));
   check('stop: ignores prose word "state"', t && t['state'] === undefined, JSON.stringify(t));
 
+  // Claude Code can fire Stop twice for one reply. Same transcript again
+  // must not count again.
   runHook('stop.js', { transcript_path: tp, cwd: project, hook_event_name: 'Stop' });
   t = learned();
-  check('stop: increments on second reply', t && t['npm install'] === 2, JSON.stringify(t));
+  check('stop: same reply is counted once even when Stop fires twice', t && t['npm install'] === 1, JSON.stringify(t));
+
+  // A genuinely new reply (new uuid) counts again.
+  const tpNext = writeTranscript([
+    transcriptLine('user', 'and again'),
+    transcriptLine('assistant', [{ type: 'text', text: 'Run `npm install` once more.' }]),
+  ]);
+  runHook('stop.js', { transcript_path: tpNext, cwd: project, hook_event_name: 'Stop' });
+  t = learned();
+  check('stop: increments on a new reply', t && t['npm install'] === 2, JSON.stringify(t));
 
   // Reply with tool results in between: only text since the last human prompt.
   const tp2 = writeTranscript([

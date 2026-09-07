@@ -80,22 +80,32 @@ function learnedPath(cwd) {
   return path.join(cwd || process.cwd(), '.outgrow', 'learned.json');
 }
 
-function readLearned(cwd) {
+// { terms, last } — `last` is the uuid of the reply most recently counted.
+function readLearnedFile(cwd) {
+  const empty = { terms: {}, last: null };
   try {
     const p = learnedPath(cwd);
-    if (fs.lstatSync(p).isSymbolicLink()) return {};
+    if (fs.lstatSync(p).isSymbolicLink()) return empty;
     const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-    return data && data.terms && typeof data.terms === 'object' ? data.terms : {};
-  } catch (e) { return {}; }
+    return {
+      terms: data && data.terms && typeof data.terms === 'object' ? data.terms : {},
+      last: data && typeof data.last === 'string' ? data.last : null,
+    };
+  } catch (e) { return empty; }
 }
 
-function writeLearned(cwd, terms) {
+function readLearned(cwd) {
+  return readLearnedFile(cwd).terms;
+}
+
+function writeLearned(cwd, terms, last) {
   try {
     const p = learnedPath(cwd);
     fs.mkdirSync(path.dirname(p), { recursive: true });
     try { if (fs.lstatSync(p).isSymbolicLink()) return; } catch (e) { /* new file */ }
+    const body = last ? { terms, last } : { terms };
     const tmp = p + '.' + process.pid + '.tmp';
-    fs.writeFileSync(tmp, JSON.stringify({ terms }, null, 2) + '\n');
+    fs.writeFileSync(tmp, JSON.stringify(body, null, 2) + '\n');
     fs.renameSync(tmp, p);
   } catch (e) { /* best-effort */ }
 }
@@ -155,6 +165,7 @@ function lastAssistantReply(transcriptPath) {
   const lines = raw.split('\n');
   const texts = [];
   let cwd = null;
+  let uuid = null;
   let seenAssistant = false;
   for (let i = lines.length - 1, scanned = 0; i >= 0 && scanned < 400; i--, scanned++) {
     const line = lines[i].trim();
@@ -165,6 +176,7 @@ function lastAssistantReply(transcriptPath) {
     if (entry.type !== 'assistant' || !entry.message) continue;
     seenAssistant = true;
     if (!cwd && entry.cwd) cwd = entry.cwd;
+    if (!uuid && typeof entry.uuid === 'string') uuid = entry.uuid;
     const c = entry.message.content;
     if (Array.isArray(c)) {
       for (const b of c) if (b && b.type === 'text' && typeof b.text === 'string') texts.unshift(b.text);
@@ -173,7 +185,7 @@ function lastAssistantReply(transcriptPath) {
     }
   }
   if (!texts.length) return null;
-  return { text: texts.join('\n'), cwd };
+  return { text: texts.join('\n'), cwd, uuid };
 }
 
 function escapeRegex(s) {
@@ -215,6 +227,7 @@ module.exports = {
   isOff,
   setOff,
   learnedPath,
+  readLearnedFile,
   readLearned,
   writeLearned,
   stageSummary,

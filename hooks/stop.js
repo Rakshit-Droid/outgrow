@@ -23,11 +23,18 @@ lib.readStdin(data => {
     if (!seen.length) process.exit(0);
 
     const cwd = data.cwd || reply.cwd || process.cwd();
-    const terms = lib.readLearned(cwd);
+    const state = lib.readLearnedFile(cwd);
+
+    // Claude Code can fire Stop more than once for the same reply (seen in
+    // -p mode). Counting it twice would halve the fade, so the uuid of the
+    // last counted reply is remembered and a repeat is skipped.
+    if (reply.uuid && state.last === reply.uuid) process.exit(0);
+
+    const terms = state.terms;
     for (const term of seen) {
       terms[term] = (typeof terms[term] === 'number' ? terms[term] : 0) + 1;
     }
-    lib.writeLearned(cwd, terms);
+    lib.writeLearned(cwd, terms, reply.uuid || null);
   } catch (e) { /* silent */ }
   process.exit(0);
 });
