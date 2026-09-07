@@ -2,7 +2,7 @@
 
 The outputs that scare people most, and what outgrow says instead.
 
-**Read these as a test.** If any explanation still leaves you confused, that wording is wrong and should be changed in [glossary.json](glossary.json). Confusion is the only measure that matters here.
+**Read these as a test.** If any explanation still leaves you confused, that wording is wrong and should be changed in [glossary.json](skills/outgrow/glossary.json). Confusion is the only measure that matters here.
 
 ---
 

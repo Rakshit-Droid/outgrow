@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "outgrow",
+  "description": "A Claude Code skill that explains your code to you - and slowly stops, as you learn.",
+  "owner": {
+    "name": "Rakshit-Droid",
+    "url": "https://github.com/Rakshit-Droid"
+  },
+  "plugins": [
+    {
+      "name": "outgrow",
+      "description": "Explains technical output in plain English, tells you whether you are actually broken, flags anything that costs money or cannot be undone, and stops explaining each term once you have learned it.",
+      "source": "./",
+      "category": "productivity"
+    }
+  ]
+}

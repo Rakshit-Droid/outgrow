@@ -87,13 +87,28 @@ More examples: [examples.md](examples.md)
 
 ## Install
 
-```bash
-git clone https://github.com/Rakshit-Droid/outgrow ~/.claude/skills/outgrow
+In Claude Code, run these two lines:
+
+```
+/plugin marketplace add Rakshit-Droid/outgrow
+/plugin install outgrow@outgrow
 ```
 
-That is it. Start Claude Code and build something. It switches itself on.
+That is it. Build something. It switches itself on.
 
 To turn it off for a session, say `stop outgrow`.
+
+<details>
+<summary>Prefer to install by hand?</summary>
+
+```bash
+git clone https://github.com/Rakshit-Droid/outgrow /tmp/outgrow
+cp -r /tmp/outgrow/skills/outgrow ~/.claude/skills/outgrow
+```
+
+The skill is the folder `skills/outgrow`. It needs `SKILL.md` and `glossary.json` sitting together.
+
+</details>
 
 ---
 
@@ -113,7 +128,7 @@ Danger flags never fade. Money, deletion, and secrets get called out no matter h
 
 ## Adding words
 
-Everything lives in one file: [glossary.json](glossary.json).
+Everything lives in one file: [glossary.json](skills/outgrow/glossary.json).
 
 ```json
 {

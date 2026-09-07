@@ -1,0 +1,19 @@
+{
+  "name": "outgrow",
+  "version": "1.0.0",
+  "description": "Explains technical output in plain English, tells you whether you are actually broken, flags anything that costs money or cannot be undone, and stops explaining each term once you have learned it.",
+  "author": {
+    "name": "Rakshit-Droid",
+    "url": "https://github.com/Rakshit-Droid"
+  },
+  "homepage": "https://github.com/Rakshit-Droid/outgrow",
+  "repository": "https://github.com/Rakshit-Droid/outgrow",
+  "license": "MIT",
+  "keywords": [
+    "beginners",
+    "plain-english",
+    "explanation",
+    "learning",
+    "vibe-coding"
+  ]
+}
