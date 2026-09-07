@@ -536,7 +536,7 @@
     },
     {
       "term": "docker",
-      "aliases": ["container", "docker run", "docker compose"],
+      "aliases": ["container", "docker run", "docker compose", "Docker Desktop", "docker daemon"],
       "plain": "A way of packing your app together with everything it needs, so it runs the same on any computer.",
       "analogy": "A shipping container. Same contents, any ship.",
       "triage": null,
@@ -614,6 +614,15 @@
       "triage": null,
       "danger": null,
       "next": "When a test fails, the assertion line in the message tells you exactly which expectation was broken. Read that line, ignore the rest."
+    },
+    {
+      "term": "daemon",
+      "aliases": ["daemon not running", "background service", "service not running", "dockerd", "the daemon", "is the daemon running"],
+      "plain": "A program that runs quietly in the background waiting to be asked for something — no window, no button, you never see it.",
+      "analogy": "The boiler in the basement. You never look at it, but nothing is warm until it is on.",
+      "triage": "warning",
+      "danger": null,
+      "next": "If it says 'not running', something needs switching on first — usually Docker Desktop. Open it, wait until it says it is running, then try again."
     }
   ]
 }
