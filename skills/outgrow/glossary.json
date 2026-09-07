@@ -596,6 +596,24 @@
       "triage": null,
       "danger": null,
       "next": "Nothing to do. If it finds a problem, that is the point — cheaper to catch now than after it is live."
+    },
+    {
+      "term": "constraint",
+      "aliases": ["database constraint", "unique constraint", "not null constraint", "constraint violation", "constraint tests", "constraint failed"],
+      "plain": "A rule your data must obey — this field cannot be empty, this value must be unique, this number cannot go below zero.",
+      "analogy": "A rule on a form: one email per account, no blank names.",
+      "triage": null,
+      "danger": null,
+      "next": "If you see 'constraint violation' or 'constraint failed', something tried to save data that broke one of these rules. The message names which one."
+    },
+    {
+      "term": "assert",
+      "aliases": ["assertion", "asserts", "assertion failed", "AssertionError", "expect(", "expected"],
+      "plain": "A line in a test that says 'this must be true' — if it is not, the test fails and tells you.",
+      "analogy": "A checkpoint on a form: 'age must be over 18'. Wrong answer, you do not get through.",
+      "triage": null,
+      "danger": null,
+      "next": "When a test fails, the assertion line in the message tells you exactly which expectation was broken. Read that line, ignore the rest."
     }
   ]
 }
