@@ -95,7 +95,7 @@
     },
     {
       "term": "dependency",
-      "aliases": ["package", "library", "module"],
+      "aliases": ["package", "library", "module", "libs", "lib", "core libs"],
       "plain": "A chunk of code somebody else already wrote, that your app borrows instead of building it again.",
       "analogy": "A lego brick you buy instead of moulding yourself.",
       "triage": null,
@@ -500,7 +500,7 @@
     },
     {
       "term": "TypeScript",
-      "aliases": ["TS", "tsc", ".ts file"],
+      "aliases": ["TS", "tsc", ".ts file", "tsconfig.json", "tsconfig"],
       "plain": "A stricter way of writing JavaScript that catches certain mistakes before you run the app.",
       "analogy": "Grammar check switched on while you write.",
       "triage": null,
@@ -704,6 +704,42 @@
       "triage": null,
       "danger": null,
       "next": "If something refuses to update, it may be immutable on purpose. Check whether making a new version is the intended path."
+    },
+    {
+      "term": "scaffolding",
+      "aliases": ["scaffold", "scaffolded", "boilerplate", "project skeleton", "skeleton"],
+      "plain": "The empty frame of a project — folders, settings files, and a starting point — created before any real feature is written.",
+      "analogy": "The frame of a house before any rooms exist.",
+      "triage": null,
+      "danger": null,
+      "next": "Lots of files appearing at once is normal here. None of them is your feature yet."
+    },
+    {
+      "term": "source code",
+      "aliases": ["source", "src", "src/", "the source", "writing source", "codebase"],
+      "plain": "The files you or Claude actually write — the recipe. Everything else, like installed packages and built output, is generated from these.",
+      "analogy": "The recipe, as opposed to the meal.",
+      "triage": null,
+      "danger": null,
+      "next": "If you ever need to back something up, it is the source folder that matters. Everything else can be regenerated."
+    },
+    {
+      "term": "config",
+      "aliases": ["config file", "configuration", "settings file", "compilerOptions", "config.json", ".config.js", "configure"],
+      "plain": "A file of settings that tells a tool how to behave — which folder to look in, which rules to enforce, which version to target.",
+      "analogy": "The settings menu, saved as a file.",
+      "triage": null,
+      "danger": null,
+      "next": "You rarely edit these by hand. If a tool behaves oddly, its config file is the first place to look."
+    },
+    {
+      "term": "background",
+      "aliases": ["running in background", "background task", "background command", "in the background", "Command running in background"],
+      "plain": "A long command left running while Claude carries on with other work. It has not finished yet — Claude will be told when it does.",
+      "analogy": "Putting the kettle on and doing the dishes while it boils.",
+      "triage": "normal",
+      "danger": null,
+      "next": "Nothing to do. If it seems stuck for minutes, ask Claude to check the output file it named."
     }
   ]
 }
