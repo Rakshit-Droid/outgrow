@@ -740,6 +740,15 @@
       "triage": "normal",
       "danger": null,
       "next": "Nothing to do. If it seems stuck for minutes, ask Claude to check the output file it named."
+    },
+    {
+      "term": "streaming",
+      "aliases": ["stream", "streamed", "streaming response", "chunked", "chunks", "ReadableStream"],
+      "plain": "Handling data piece by piece as it arrives, instead of waiting for the whole thing to land first.",
+      "analogy": "Drinking from a tap versus waiting for the bucket to fill.",
+      "triage": null,
+      "danger": null,
+      "next": "This is why text can appear word by word, or a big upload can be checked before it finishes. Nothing to do."
     }
   ]
 }
