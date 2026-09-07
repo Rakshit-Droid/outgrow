@@ -491,7 +491,7 @@
     },
     {
       "term": "lint",
-      "aliases": ["eslint", "linter", "lint error", "prettier"],
+      "aliases": ["eslint", "linter", "lint error", "prettier", "eslint-disable", "eslint-disable-next-line"],
       "plain": "An automatic tidiness checker. It complains about style, not about things being broken.",
       "analogy": "A spellchecker. Underlines things, does not stop you writing.",
       "triage": "warning",
@@ -767,6 +767,51 @@
       "triage": null,
       "danger": null,
       "next": "A 'missing header' means a label was left off. Often harmless, sometimes the reason a message displays wrong or gets rejected."
+    },
+    {
+      "term": "regex",
+      "aliases": ["regular expression", "regexp", ".test(", "pattern match", "no-control-regex", "regex is wrong"],
+      "plain": "A compact pattern for matching text — 'anything that looks like an email', 'any character that is not a normal letter'.",
+      "analogy": "A stencil. Whatever fits through the cut-out shape matches.",
+      "triage": null,
+      "danger": null,
+      "next": "Regex is easy to get subtly wrong, even for experts. If a check lets the wrong things through or blocks the right ones, suspect the pattern first."
+    },
+    {
+      "term": "control character",
+      "aliases": ["control characters", "NUL", "DEL", "\\x00", "\\u0000", "non-printing character", "invisible character", "literal control characters", "control chars"],
+      "plain": "An invisible character with no visible shape — it exists in the file but you cannot see it on screen.",
+      "analogy": "Blank ink on the page. The page is not empty, you just cannot see it.",
+      "triage": "warning",
+      "danger": null,
+      "next": "If an edit keeps failing to match a line that looks identical, an invisible character is the usual cause. The fix is to write it out as a visible code like \\x00."
+    },
+    {
+      "term": "escape",
+      "aliases": ["escaped", "escaping", "escape sequence", "unescaped", "backslash", "\\n", "\\t", "now escaped"],
+      "plain": "Writing a special or invisible character as a visible code — a real newline becomes \\n, a real NUL becomes \\x00 — so tools do not mangle it.",
+      "analogy": "Spelling a word out letter by letter over the phone instead of saying it.",
+      "triage": null,
+      "danger": null,
+      "next": "'Now escaped' is good news: the invisible thing became visible and safe. 'Unescaped' in an error means something still needs that treatment."
+    },
+    {
+      "term": "ASCII",
+      "aliases": ["non-ASCII", "\\x00-\\x7F", "plain ASCII", "printable ASCII"],
+      "plain": "The basic set of 128 characters — English letters, digits, common punctuation. Accents, emoji and other alphabets are 'non-ASCII'.",
+      "analogy": "The keys on a plain English keyboard, and nothing else.",
+      "triage": null,
+      "danger": null,
+      "next": "A 'non-ASCII' check usually means the code is guarding against accents or emoji sneaking into a place that cannot handle them."
+    },
+    {
+      "term": "bytes",
+      "aliases": ["byte", "raw bytes", "hex", "hexadecimal", "hex dump", "0x"],
+      "plain": "The raw numbers a file is actually made of, one per character. Reading them shows exactly what is there, invisible characters included.",
+      "analogy": "Looking at the individual pixels instead of the picture.",
+      "triage": null,
+      "danger": null,
+      "next": "When Claude shows bytes, it is proving what is really in the file rather than trusting the screen. You do not need to read them."
     }
   ]
 }
