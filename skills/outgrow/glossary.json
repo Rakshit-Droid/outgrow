@@ -95,7 +95,7 @@
     },
     {
       "term": "dependency",
-      "aliases": ["package", "library", "module", "libs", "lib", "core libs"],
+      "aliases": ["package", "library", "module", "libs", "lib", "core libs", "deps", "no new deps"],
       "plain": "A chunk of code somebody else already wrote, that your app borrows instead of building it again.",
       "analogy": "A lego brick you buy instead of moulding yourself.",
       "triage": null,
@@ -266,7 +266,7 @@
     },
     {
       "term": "API key",
-      "aliases": ["secret key", "access token", "API token", "sk-", "bearer token"],
+      "aliases": ["secret key", "access token", "API token", "sk-", "bearer token", "credentials", "creds", "need credentials"],
       "plain": "A password that lets your app use somebody else's service. Whoever has it can spend your money.",
       "analogy": "Your credit card number, written in a text file.",
       "triage": null,
@@ -275,7 +275,7 @@
     },
     {
       "term": ".env",
-      "aliases": ["environment variable", "env file", "process.env"],
+      "aliases": ["environment variable", "env file", "process.env", ".env.example", ".env.local"],
       "plain": "A private file holding your passwords and keys, kept out of your uploaded code.",
       "analogy": "The safe, not the shop window.",
       "triage": null,
@@ -302,7 +302,7 @@
     },
     {
       "term": "migration",
-      "aliases": ["db migration", "prisma migrate", "schema change"],
+      "aliases": ["db migration", "prisma migrate", "schema change", "db:migrate", "npm run db:migrate"],
       "plain": "Changing the shape of your filing cabinet — adding a new drawer, renaming a label.",
       "analogy": "Reorganising a filing cabinet while files are still inside it.",
       "triage": null,
@@ -626,7 +626,7 @@
     },
     {
       "term": "test",
-      "aliases": ["tests", "test suite", "npm test", "FAIL", "PASS", "passing", "failing", "unit test", "jest", "vitest", "pytest", "tests passed", "tests failed"],
+      "aliases": ["tests", "test suite", "npm test", "FAIL", "PASS", "passing", "failing", "unit test", "jest", "vitest", "pytest", "tests passed", "tests failed", "smoke test", "smoke"],
       "plain": "A small automatic check that runs one part of your app and confirms it did what it was supposed to. PASS means it did. FAIL means it did not.",
       "analogy": "Pressing the test button on a smoke alarm. Beep means it works.",
       "triage": null,
@@ -761,7 +761,7 @@
     },
     {
       "term": "header",
-      "aliases": ["headers", "HTTP header", "email header", "Content-Type", "request headers", "response headers", "Authorization header", "missing header"],
+      "aliases": ["headers", "HTTP header", "email header", "Content-Type", "request headers", "response headers", "Authorization header", "missing header", "MIME", "MIME headers"],
       "plain": "A label attached to a message — an email or a web request — that describes it: what type it is, who sent it, what alphabet it uses.",
       "analogy": "The envelope. Not the letter, but everything written on the outside of it.",
       "triage": null,
@@ -812,6 +812,141 @@
       "triage": null,
       "danger": null,
       "next": "When Claude shows bytes, it is proving what is really in the file rather than trusting the screen. You do not need to read them."
+    },
+    {
+      "term": "table",
+      "aliases": ["database table", "tables", "sessions table", "rows", "row", "column", "columns"],
+      "plain": "One kind of record in your database, kept as a grid — a users table, an orders table. Each row is one item, each column is one field.",
+      "analogy": "A spreadsheet tab. One tab per kind of thing.",
+      "triage": null,
+      "danger": null,
+      "next": "'No sessions table' means that kind of record is not stored at all — a design choice, not a gap."
+    },
+    {
+      "term": "log",
+      "aliases": ["logs", "access log", "logging", "log file", "console.log", "server logs", "log line", "audit log"],
+      "plain": "A running record of what happened, written as it happens — who did what, when, and any errors along the way.",
+      "analogy": "A ship's logbook.",
+      "triage": null,
+      "danger": null,
+      "next": "When something goes wrong, the log is where the real reason lives. Ask Claude to read the last part of it."
+    },
+    {
+      "term": "storage",
+      "aliases": ["object storage", "bucket", "S3", "R2", "blob storage", "file storage", "S3/R2", "the store"],
+      "plain": "Where uploaded files live — a big remote hard drive rented from a cloud provider, separate from your database.",
+      "analogy": "A storage unit across town. Your filing cabinet holds the paperwork; the unit holds the boxes.",
+      "triage": null,
+      "danger": null,
+      "next": "Cloud storage is cheap but not free — large videos add up. A 'local' storage driver keeps files on your own disk while building."
+    },
+    {
+      "term": "interface",
+      "aliases": ["interfaces", "implementation", "implementations", "behind an interface", "driver", "drivers", "adapter", "abstraction"],
+      "plain": "A fixed set of actions something promises to offer — 'save a file', 'send an email' — with the actual how swappable behind it.",
+      "analogy": "A wall socket. Any appliance with the right plug works; you never rewire the house.",
+      "triage": null,
+      "danger": null,
+      "next": "'Behind an interface' means you can swap the real thing (cloud storage) for a fake one (your own disk) without changing the rest of the app."
+    },
+    {
+      "term": "timestamp",
+      "aliases": ["created_at", "updated_at", "hashed_at", "timestamps", "ISO 8601", "epoch", "Unix time", "the clock"],
+      "plain": "A recorded moment in time — when a record was made, changed, or delivered — stored as a precise date and time.",
+      "analogy": "The date stamp on a receipt.",
+      "triage": null,
+      "danger": null,
+      "next": "If times look off by a few hours, it is usually a timezone difference, not a bug."
+    },
+    {
+      "term": "infrastructure",
+      "aliases": ["infra", "zero infrastructure", "no infrastructure", "cloud infrastructure", "provisioning"],
+      "plain": "The machines and services your app needs to exist somewhere — servers, databases, storage, email — usually rented from a cloud provider.",
+      "analogy": "The building, plumbing and electricity. Not the shop itself.",
+      "triage": null,
+      "danger": null,
+      "next": "'Zero infrastructure' is a compliment: nothing extra to rent, set up, or pay for."
+    },
+    {
+      "term": "timing attack",
+      "aliases": ["user enumeration", "account enumeration", "constant-time", "response time doesn't reveal", "timing-safe"],
+      "plain": "A trick where an attacker learns something from how long a reply takes — a fast 'wrong password' can reveal that the account does not exist.",
+      "analogy": "Knocking on doors and timing how long before someone says 'nobody here'.",
+      "triage": null,
+      "danger": null,
+      "next": "The defence is to make every answer take the same time. When Claude does extra work 'even when the account doesn't exist', that is why."
+    },
+    {
+      "term": "protocol",
+      "aliases": ["HTTP", "HTTPS", "SMTP", "TCP", "WebSocket", "protocols", "over HTTP"],
+      "plain": "An agreed way for two programs to talk — HTTP for web pages, SMTP for sending email. Both sides must speak the same one.",
+      "analogy": "A language two people agree to use on a phone call.",
+      "triage": null,
+      "danger": null,
+      "next": "HTTPS is HTTP with the conversation locked. Anything handling passwords or payments must use it."
+    },
+    {
+      "term": "throw",
+      "aliases": ["throws", "thrown", "exception", "uncaught exception", "throw new Error", "raise", "raised", "unhandled"],
+      "plain": "How code reports that it cannot continue — it stops and hands an error upward for someone to deal with.",
+      "analogy": "Pulling the emergency cord on a train.",
+      "triage": null,
+      "danger": null,
+      "next": "'Throws' in a plan is deliberate: the code refuses loudly instead of failing quietly. 'Uncaught exception' in output means nobody caught it — that one is a crash."
+    },
+    {
+      "term": "spike",
+      "aliases": ["proof of concept", "POC", "prototype", "throwaway", "quick experiment", "spike still blocked"],
+      "plain": "A quick, rough experiment to find out whether something works at all, meant to be thrown away afterwards.",
+      "analogy": "Taste-testing a sauce before cooking the full meal.",
+      "triage": null,
+      "danger": null,
+      "next": "Code from a spike should not ship. If it works, the real version gets built properly afterwards."
+    },
+    {
+      "term": "pipeline",
+      "aliases": ["pipelines", "preview pipeline", "CI pipeline", "data pipeline", "build pipeline", "stages"],
+      "plain": "A fixed chain of steps data or code passes through, each step feeding the next — upload, then check, then convert, then publish.",
+      "analogy": "A car assembly line.",
+      "triage": null,
+      "danger": null,
+      "next": "If a pipeline is 'blocked', one step cannot run yet, so everything after it waits."
+    },
+    {
+      "term": "spec",
+      "aliases": ["specification", "RFC", "RFC 2047", "per spec", "the spec", "standard", "spec-compliant"],
+      "plain": "A published rulebook that says exactly how something must work, so different programs agree — email format, web addresses, dates.",
+      "analogy": "The rules of the road. Everyone drives on the same side because it is written down.",
+      "triage": null,
+      "danger": null,
+      "next": "'Per spec' or 'per RFC' means Claude followed the official rulebook rather than guessing. Good sign."
+    },
+    {
+      "term": "password hash",
+      "aliases": ["scrypt", "bcrypt", "argon2", "salted", "salt", "hashed password", "password hashing"],
+      "plain": "A scrambled version of a password that is stored instead of the real one — checkable, but impossible to turn back into the password.",
+      "analogy": "Keeping a fingerprint of the key, not the key. You can match it, but you cannot cut a copy from it.",
+      "triage": null,
+      "danger": null,
+      "next": "If you ever see plain passwords stored anywhere, that is a real problem. Hashed ones are the correct, normal state."
+    },
+    {
+      "term": "session",
+      "aliases": ["sessions", "session cookie", "cookie", "cookies", "logged in", "login state", "session expired"],
+      "plain": "How a site remembers you are logged in between clicks — a small token kept in your browser and checked on every request.",
+      "analogy": "A wristband at a festival. Shown once at the gate, checked at every tent.",
+      "triage": null,
+      "danger": null,
+      "next": "'Session expired' means the wristband ran out. Logging in again is the fix, not a bug."
+    },
+    {
+      "term": "signature",
+      "aliases": ["HMAC", "signed", "signing", "tamper-evident", "verify signature", "invalid signature", "signed cookie"],
+      "plain": "A seal added to data using a secret key. Anyone can read the data, but nobody can alter it without the seal failing to match.",
+      "analogy": "A wax seal on a letter. Reading is fine; opening it breaks the seal.",
+      "triage": null,
+      "danger": null,
+      "next": "'Invalid signature' means data was changed after it was sealed, or the wrong key was used to check it. Either way, do not trust that data."
     }
   ]
 }
