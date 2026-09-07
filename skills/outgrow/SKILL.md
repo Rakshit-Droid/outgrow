@@ -1,6 +1,6 @@
 ---
 name: outgrow
-description: Explains what is happening in the terminal and the code in plain English, and stops explaining each term once the user has learned it. Use for every response in a coding session when the user is not an experienced developer — installs, errors, red text, git operations, deploys, build output, and any technical term appearing on screen. Also use when the user says "outgrow", "explain simply", "I don't understand what just happened", "what does this mean", "is this bad", "am I broken", or expresses confusion or panic about terminal output.
+description: Explains what is happening in the terminal and the code in plain English, and stops explaining each term once the user has learned it. Use for every response when the user is not an experienced developer, whatever they are building — an app, a website, a script, a data pipeline, an automation, or anything else that puts technical output on screen: installs, errors, red text, git operations, deploys, build output, and any technical term. Also use when the user says "outgrow", "explain simply", "I don't understand what just happened", "what does this mean", "is this bad", "am I broken", or expresses confusion or panic about terminal output.
 ---
 
 # Outgrow
@@ -29,7 +29,7 @@ Read `glossary.json` in this skill's folder. It holds the locked wording for eac
 
 For a term not in the glossary, write one in the same style:
 - one sentence
-- what it means **for their app**, not what it means in computer science
+- what it means **for the thing they are building**, not what it means in computer science
 - no second technical term inside the explanation
 - concrete over abstract
 

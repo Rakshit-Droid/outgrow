@@ -8,7 +8,7 @@ Every other tool wants you dependent forever. This one is built to become unnece
 
 ## The problem
 
-You are building an app. The screen fills with words nobody explained to you.
+You are building something — an app, a site, a script, an automation. The screen fills with words nobody explained to you.
 
 ```
 npm WARN deprecated inflight@1.0.6: This module is not supported
@@ -143,7 +143,7 @@ Everything lives in one file: [glossary.json](skills/outgrow/glossary.json).
 
 Rules for a good entry:
 
-- `plain` is **one sentence**, and says what it means *for your app* — not what it means in computer science
+- `plain` is **one sentence**, and says what it means *for the thing the reader is building* — not what it means in computer science
 - no technical term inside the explanation of a technical term
 - `next` is required. A definition with no next step is useless to someone building something
 - `analogy` stays fixed forever. Same comparison every time is what makes it stick
