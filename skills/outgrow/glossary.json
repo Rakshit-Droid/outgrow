@@ -623,6 +623,87 @@
       "triage": "warning",
       "danger": null,
       "next": "If it says 'not running', something needs switching on first — usually Docker Desktop. Open it, wait until it says it is running, then try again."
+    },
+    {
+      "term": "test",
+      "aliases": ["tests", "test suite", "npm test", "FAIL", "PASS", "passing", "failing", "unit test", "jest", "vitest", "pytest", "tests passed", "tests failed"],
+      "plain": "A small automatic check that runs one part of your app and confirms it did what it was supposed to. PASS means it did. FAIL means it did not.",
+      "analogy": "Pressing the test button on a smoke alarm. Beep means it works.",
+      "triage": null,
+      "danger": null,
+      "next": "A FAIL is not always a bug in your app — often the test itself was set up wrong. Read the line under FAIL; it says which expectation broke."
+    },
+    {
+      "term": "fixture",
+      "aliases": ["test fixture", "fixtures", "seed data", "setup data", "beforeEach", "test setup"],
+      "plain": "The pretend data a test creates first so it has something to check — a fake user, a fake order.",
+      "analogy": "Setting the table before the meal you are about to test.",
+      "triage": null,
+      "danger": null,
+      "next": "If a test fails because something 'does not exist' or 'was not found', the fixture probably forgot to create it. That is a mistake in the test, not your app."
+    },
+    {
+      "term": "foreign key",
+      "aliases": ["referenced", "references", "still referenced", "reference", "RESTRICT", "ON DELETE RESTRICT", "foreign key constraint", "FK", "cannot be deleted"],
+      "plain": "A link from one record to another — an order points at its customer. RESTRICT refuses to delete a record while something still points at it.",
+      "analogy": "You cannot demolish a house while mail is still addressed to it. RESTRICT is the post office saying no.",
+      "triage": null,
+      "danger": null,
+      "next": "If a delete is refused with 'still referenced', that is the rule working as intended. Delete or move the things pointing at it first."
+    },
+    {
+      "term": "ON DELETE CASCADE",
+      "aliases": ["CASCADE", "cascade delete", "cascading delete", "onDelete: Cascade"],
+      "plain": "Deleting a record also deletes everything that points at it — delete a customer, and all their orders vanish with them.",
+      "analogy": "Pulling one brick out and everything stacked on it comes down.",
+      "triage": null,
+      "danger": "irreversible",
+      "next": "On a live database this can wipe far more than you meant. Make sure a backup exists before any delete on a table with this rule."
+    },
+    {
+      "term": "append-only",
+      "aliases": ["append only", "REVOKE UPDATE", "REVOKE DELETE", "TRUNCATE", "insert-only", "write-once"],
+      "plain": "Records can be added but never edited or erased — the history only grows.",
+      "analogy": "A logbook in pen. You can add a line, you cannot tear one out.",
+      "triage": null,
+      "danger": null,
+      "next": "To correct something in an append-only log, add a new entry that says so. You do not change the old one."
+    },
+    {
+      "term": "trigger",
+      "aliases": ["database trigger", "trigger function", "BEFORE UPDATE", "AFTER INSERT", "on save"],
+      "plain": "An automatic rule in the database that runs by itself whenever a record is added, changed, or deleted.",
+      "analogy": "A door sensor: open the door, the light comes on. Nobody pressed a switch.",
+      "triage": null,
+      "danger": null,
+      "next": "If something in the database changes 'on its own', a trigger did it. Ask which one."
+    },
+    {
+      "term": "hash",
+      "aliases": ["hash chain", "checksum", "SHA-256", "sha256", "fingerprint", "digest", "commit hash", "hashed", "hash mismatch"],
+      "plain": "A short fingerprint computed from some data. Change even one letter of the data and the fingerprint changes completely.",
+      "analogy": "A wax seal. Break the seal and everyone can see it was opened.",
+      "triage": null,
+      "danger": null,
+      "next": "Used to spot tampering and to name versions. A 'hash mismatch' means the data is not what it was when the fingerprint was made."
+    },
+    {
+      "term": "index",
+      "aliases": ["database index", "unique index", "partial unique index", "add an index", "indexed", "UNIQUE", "duplicate key", "unique violation"],
+      "plain": "A lookup table the database keeps so it can find records fast. A unique index also refuses two records with the same value.",
+      "analogy": "The index at the back of a book — find the page without reading the whole thing.",
+      "triage": null,
+      "danger": null,
+      "next": "If a save fails with 'duplicate key' or 'unique violation', a unique index blocked a repeat value. That is it doing its job."
+    },
+    {
+      "term": "immutable",
+      "aliases": ["immutability", "cannot be changed", "frozen", "freeze", "read-only after"],
+      "plain": "Cannot be changed after it is created. To 'change' it, you make a new one.",
+      "analogy": "A printed receipt. You cannot edit it, you can only issue a new one.",
+      "triage": null,
+      "danger": null,
+      "next": "If something refuses to update, it may be immutable on purpose. Check whether making a new version is the intended path."
     }
   ]
 }
