@@ -578,6 +578,24 @@
       "triage": null,
       "danger": "money",
       "next": "Long conversations and big files cost more. Check your usage page if unsure."
+    },
+    {
+      "term": "schema",
+      "aliases": ["database schema", "JSON schema", "data model", "table structure", "the schema"],
+      "plain": "The agreed shape of your data — which fields exist, what kind of value goes in each, and which ones are required.",
+      "analogy": "A paper form with fixed boxes. Every entry has to fill in the same boxes.",
+      "triage": null,
+      "danger": null,
+      "next": "If data is being rejected or coming back empty, check the shape it was sent in against this."
+    },
+    {
+      "term": "adversarial review",
+      "aliases": ["adversarial verify", "adversarial check", "try to refute", "red team", "adversarially"],
+      "plain": "Checking work by deliberately trying to prove it wrong, instead of just reading it over and nodding.",
+      "analogy": "Asking a second person to find holes in your plan, not to agree with it.",
+      "triage": null,
+      "danger": null,
+      "next": "Nothing to do. If it finds a problem, that is the point — cheaper to catch now than after it is live."
     }
   ]
 }
