@@ -749,6 +749,24 @@
       "triage": null,
       "danger": null,
       "next": "This is why text can appear word by word, or a big upload can be checked before it finishes. Nothing to do."
+    },
+    {
+      "term": "encoding",
+      "aliases": ["UTF-8", "utf8", "charset", "character set", "charset header", "mojibake", "garbled characters", "BOM", "ANSI", "encoding bug"],
+      "plain": "The alphabet rules a file or message uses to store letters. Mismatched rules turn accents, dashes and emoji into gibberish like â€”.",
+      "analogy": "Two people reading the same coded note with different keys — it comes out as nonsense.",
+      "triage": "warning",
+      "danger": null,
+      "next": "If odd characters appear only in your terminal but the file or email itself is fine, it is the display misreading, not a real bug. Check the actual file first."
+    },
+    {
+      "term": "header",
+      "aliases": ["headers", "HTTP header", "email header", "Content-Type", "request headers", "response headers", "Authorization header", "missing header"],
+      "plain": "A label attached to a message — an email or a web request — that describes it: what type it is, who sent it, what alphabet it uses.",
+      "analogy": "The envelope. Not the letter, but everything written on the outside of it.",
+      "triage": null,
+      "danger": null,
+      "next": "A 'missing header' means a label was left off. Often harmless, sometimes the reason a message displays wrong or gets rejected."
     }
   ]
 }

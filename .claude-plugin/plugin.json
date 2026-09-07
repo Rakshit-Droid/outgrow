@@ -1,6 +1,6 @@
 {
   "name": "outgrow",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Explains technical output in plain English, tells you whether you are actually broken, flags anything that costs money or cannot be undone, and stops explaining each term once you have learned it.",
   "author": {
     "name": "Rakshit-Droid",
